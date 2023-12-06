@@ -1,0 +1,4 @@
+name: MAH-Timer
+version: '${project.version}'
+main: ch.jmcommand.mahtimer.MAH_Timer
+api-version: '1.20'

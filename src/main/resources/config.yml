@@ -1,0 +1,6 @@
+escapeGameMap: "NomDeVotreMapEscapeGame"
+escapeGameMapFinal: "NomDeVotreMapEscapeGameFinal"
+escapeGameMapLose: "NomDeVotreMapEscapeGameLose"
+timerDuration: 1800 # Durée en secondes (30 minutes par défaut)
+bossBarWin: "Bravo! Vous avez réussi / visité le musée!"
+bossBarLose: "Temps écoulé! Merci d'avoir joué / visité le musée!"
