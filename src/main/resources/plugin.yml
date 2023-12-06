@@ -4,3 +4,12 @@ main: ch.jmcommand.mahtimer.MAH_Timer
 api-version: '1.20'
 author: JM_command
 description: A timer plugin for Minecraft servers MAH.
+commands:
+  mahtimer:
+    description: Gère le timer MAH.
+    usage: /<command> <stop>
+    permission: mahtimer.stop
+permissions:
+  mahtimer.stop:
+    description: Permet à l'utilisateur d'arrêter le timer MAH.
+    default: op

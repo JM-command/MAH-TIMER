@@ -14,6 +14,10 @@ import org.bukkit.boss.BossBar;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.Permission;
 
 public final class MAH_Timer extends JavaPlugin implements Listener {
     private FileConfiguration config;
@@ -31,6 +35,28 @@ public final class MAH_Timer extends JavaPlugin implements Listener {
 
         // Enregistrement des écouteurs d'événements
         getServer().getPluginManager().registerEvents(this, this);
+
+        this.getCommand("mahtimer").setExecutor(this);
+        Permission stopPermission = new Permission("mahtimer.stop");
+        getServer().getPluginManager().addPermission(stopPermission);
+    }
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        // Vérifie si la commande est 'mahtimer'
+        if (cmd.getName().equalsIgnoreCase("mahtimer") && args.length > 0) {
+            if (args[0].equalsIgnoreCase("stop")) {
+                // Vérifie si le joueur a la permission
+                if (sender.hasPermission("mahtimer.stop")) {
+                    stopAllTimers();
+                    sender.sendMessage(ChatColor.GREEN + "Le timer MAH a été arrêté.");
+                    return true;
+                } else {
+                    sender.sendMessage(ChatColor.RED + "Vous n'avez pas la permission de faire cela.");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @EventHandler
